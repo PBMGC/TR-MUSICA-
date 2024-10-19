@@ -18,6 +18,7 @@ builder.Services.AddDbContext<MusicaTrContext>(options =>
 });
 
 builder.Services.AddScoped<IUsuario_service, UsuarioService>();
+builder.Services.AddScoped<ICancion_service, CancionesService>();
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(options =>
     {

@@ -16,8 +16,10 @@ public partial class MusicaTrContext : DbContext
     }
 
     public virtual DbSet<Usuario> Usuarios { get; set; }
+    public virtual DbSet<Canciones> Canciones { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) { }
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Usuario>(entity =>
@@ -37,6 +39,39 @@ public partial class MusicaTrContext : DbContext
                 .HasMaxLength(50)
                 .IsUnicode(false);
             entity.Property(e => e.Vistos).HasDefaultValue(0);
+        });
+
+        modelBuilder.Entity<Canciones>(entity =>
+        {
+            entity.HasKey(e => e.CancionID).HasName("PK__Canciones");
+
+            entity.HasIndex(e => e.Link).IsUnique();
+
+            entity.Property(e => e.Link)
+                .HasMaxLength(250)
+                .IsUnicode(false)
+                .IsRequired();
+
+            entity.Property(e => e.NombreCancion)
+                .HasMaxLength(100)
+                .IsUnicode(false)
+                .IsRequired();
+
+            entity.Property(e => e.Cantante)
+                .HasMaxLength(150)
+                .IsUnicode(false)
+                .IsRequired();
+
+            entity.Property(e => e.Genero)
+                .HasMaxLength(100)
+                .IsUnicode(false)
+                .IsRequired();
+
+            entity.Property(e => e.Likes)
+                .HasDefaultValue(0);
+
+            entity.Property(e => e.Vistos)
+                .HasDefaultValue(0);
         });
 
         OnModelCreatingPartial(modelBuilder);

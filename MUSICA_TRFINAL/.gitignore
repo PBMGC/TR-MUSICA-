@@ -1,5 +1,5 @@
 # Ignorar la carpeta de configuración de Visual Studio
-.vs/
+**/.vscode/
 
 # Ignorar los archivos de solución temporales de Visual Studio
 *.sln.docstates
