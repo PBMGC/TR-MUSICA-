@@ -29,10 +29,10 @@ public partial class MusicaTrContext : DbContext
             entity.HasIndex(e => e.NombreUsuario, "UQ__Usuarios__6B0F5AE0458A70F2").IsUnique();
 
             entity.Property(e => e.Contraseña)
-                .HasMaxLength(255)
+                .HasMaxLength(20)
                 .IsUnicode(false);
             entity.Property(e => e.Email)
-                .HasMaxLength(20)
+                .HasMaxLength(100)
                 .IsUnicode(false);
             entity.Property(e => e.Likes).HasDefaultValue(0);
             entity.Property(e => e.NombreUsuario)

@@ -19,5 +19,12 @@ namespace MUSICA_TRFINAL.Servicios.Implementacion
                 .FirstOrDefaultAsync();
             return usuario_encontrado;
         }
+        
+        public async Task<Usuario> SaveUsuario(Usuario modelo)
+        {
+            _musicaTrContext.Add(modelo);
+            await _musicaTrContext.SaveChangesAsync();
+            return modelo;
+        }
     }
 }

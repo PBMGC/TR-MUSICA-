@@ -1,0 +1,33 @@
+﻿@model MUSICA_TRFINAL.Models.Canciones
+
+<div class="container mt-5 pt-5">
+    <div class="row justify-content-center">
+        <div class="col-12 col-xl-4 col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    Guardar Cancion
+                </div>
+                <div class="card-body">
+                    <form asp-controller="Canciones" asp-action="GuardarCancion" method="post" enctype="multipart/form-data">
+                        <input type="text" class="form-control mb-3" placeholder="Nombre de Cancion" asp-for="NombreCancion" required />
+                        <input type="text" class="form-control mb-3" placeholder="Cantante" asp-for="Cantante" required />
+                        <input type="text" class="form-control mb-3" placeholder="Genero" asp-for="Genero" required />
+                        <input type="text" class="form-control mb-3" placeholder="Link" asp-for="Link" required />
+                        <input type="file" class="form-control mb-3" asp-for="Imagen" required />
+                        <div class="d-grid gap-2 mb-3">
+                            <button class="btn btn-primary" type="submit">Registrarse</button>
+                        </div>
+                        @if (ViewData["Mensaje"] != null)
+                        {
+                            <div class="form-group">
+                                <div class="alert alert-danger" role="alert">
+                                    @ViewData["Mensaje"]
+                                </div>
+                            </div>
+                        }
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

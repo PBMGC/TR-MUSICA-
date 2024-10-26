@@ -36,5 +36,12 @@ namespace MUSICA_TRFINAL.Servicios.Implementacion
             return cantantesUnicos;
         }
 
+        public async Task<Canciones> SaveCancion(Canciones modelo)
+        {
+            _musicaTrContext.Add(modelo);
+            await _musicaTrContext.SaveChangesAsync();
+            return modelo;
+        }
+
     }
 }

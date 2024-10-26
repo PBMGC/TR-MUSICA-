@@ -8,6 +8,8 @@ namespace MUSICA_TRFINAL.Servicios.Interfaces
     {
         Task<List<Canciones>> GetCanciones(); 
         Task<List<string>> GetGeneros();    
-        Task<List<string>> GetCantantes();  
+        Task<List<string>> GetCantantes();
+
+        Task<Canciones> SaveCancion(Canciones canciones);
     }
 }

@@ -13,6 +13,24 @@ namespace MUSICA_TRFINAL.Controllers
     public class Inicio : Controller
     {
         private readonly IUsuario_service _usuario_service;
+        
+        public IActionResult Registrarse()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Registrarse(Usuario modelo)
+        {
+            Usuario usuario_creado = await _usuario_service.SaveUsuario(modelo);
+            if (usuario_creado.Id > 0)
+            {
+                return RedirectToAction("Logearse", "Inicio");
+            }
+
+            ViewData["Mensaje"] = "No se pudo crear";
+            return View();
+        }
 
         public Inicio(IUsuario_service usuario_Service)
         {
